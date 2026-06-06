@@ -42,16 +42,6 @@ a {
   text-decoration: none;
 }
 
-.scroll-progress {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 50;
-  height: 4px;
-  background: linear-gradient(90deg, var(--copper), var(--amber), var(--cyan));
-  transform: scaleX(0);
-  transform-origin: left center;
-}
-
 .site-nav {
   position: fixed;
   z-index: 40;
@@ -60,16 +50,16 @@ a {
   display: flex;
   width: min(1120px, calc(100% - 32px));
   min-height: 48px;
-  transform: translateX(-50%);
+  transform: translate3d(-50%, 0, 0);
   align-items: center;
   justify-content: space-between;
   gap: 16px;
   padding: 8px 10px 8px 14px;
   border: 1px solid rgba(244, 239, 228, 0.14);
   border-radius: 8px;
-  background: rgba(7, 8, 7, 0.64);
+  background: rgba(7, 8, 7, 0.9);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
-  backdrop-filter: blur(16px);
+  contain: paint;
 }
 
 .wordmark {
@@ -117,6 +107,15 @@ a {
     linear-gradient(90deg, rgba(7, 8, 7, 0.98) 0%, rgba(7, 8, 7, 0.84) 28%, rgba(7, 8, 7, 0.36) 58%, rgba(7, 8, 7, 0.22) 100%),
     linear-gradient(0deg, rgba(7, 8, 7, 0.96) 0%, rgba(7, 8, 7, 0.08) 38%, rgba(7, 8, 7, 0.38) 100%),
     url("assets/peak-reddit-hero.png") center / cover no-repeat;
+}
+
+@supports (background-image: image-set(url("assets/peak-reddit-hero.webp") type("image/webp"))) {
+  .hero {
+    background:
+      linear-gradient(90deg, rgba(7, 8, 7, 0.98) 0%, rgba(7, 8, 7, 0.84) 28%, rgba(7, 8, 7, 0.36) 58%, rgba(7, 8, 7, 0.22) 100%),
+      linear-gradient(0deg, rgba(7, 8, 7, 0.96) 0%, rgba(7, 8, 7, 0.08) 38%, rgba(7, 8, 7, 0.38) 100%),
+      image-set(url("assets/peak-reddit-hero.webp") type("image/webp"), url("assets/peak-reddit-hero.png") type("image/png")) center / cover no-repeat;
+  }
 }
 
 .hero::after {
